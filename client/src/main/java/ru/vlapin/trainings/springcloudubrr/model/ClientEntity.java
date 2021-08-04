@@ -1,5 +1,6 @@
 package ru.vlapin.trainings.springcloudubrr.model;
 
+import static javax.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
 
 import java.util.Objects;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.GenericGenerator;
 import org.jetbrains.annotations.Contract;
 
 @Getter
@@ -22,16 +24,21 @@ import org.jetbrains.annotations.Contract;
 @Setter//(PRIVATE)
 @RequiredArgsConstructor
 @NoArgsConstructor(access = PROTECTED)
+
 public class ClientEntity implements Client {
 
+//  @Id
+//  @GenericGenerator(name="kaugen" , strategy="increment")
+//  @GeneratedValue(generator="kaugen")
+
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   Integer id;
 
   @NonNull String name;
 
   @Override
-  @Contract(value = "null -> false", pure = true)
+  //@Contract(value = "null -> false", pure = true)
   public boolean equals(Object o) {
     return this == o || o != null
                             && Hibernate.getClass(this) == Hibernate.getClass(o)
