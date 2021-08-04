@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: Eureka
+  security:
+    user:
+      name: dubby
+      password: dubby
+
+server:
+  port: 8761
+  servlet:
+    context-path: /eureka
+
+#  cloud:
+#    config:
+#      import-check:
+#        enabled: false
+
+eureka:
+  client:
+    fetchRegistry: false
+    registerWithEureka: false

@@ -1,0 +1,18 @@
+### Create client
+POST http://localhost:8801/client
+Authorization: Basic dXNlcjp1c2Vy
+Content-Disposition: form-data; name="Test"
+
+### Get client info
+GET http://user:user@localhost:8801/client
+
+### Update client name
+PUT http://localhost:8801/client/1?name=TestUpdate
+Authorization: Basic dXNlcjp1c2Vy
+
+### Get info about client with id 1
+GET http://user:user@localhost:8801/client?id=1
+
+### Delete client with id 1
+DELETE http://localhost:8801/client/1
+Authorization: Basic dXNlcjp1c2Vy
