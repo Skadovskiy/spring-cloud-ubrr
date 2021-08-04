@@ -1,22 +1,27 @@
-spring:
-  application:
-    name: Eureka
-  security:
-    user:
-      name: dubby
-      password: dubby
 
 server:
   port: 8761
-  servlet:
-    context-path: /eureka
-
-#  cloud:
-#    config:
-#      import-check:
-#        enabled: false
 
 eureka:
+  datacenter: trmap
+  environment: product
+  server:
+    # Отключить самозащиту
+    enable-self-preservation: false
+    # Очистить сервер
+    eviction-interval-timer-in-ms: 5000
   client:
-    fetchRegistry: false
-    registerWithEureka: false
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://user:user@localhost:8801/eureka/
+    register-with-eureka: false
+    fetch-registry: false
+
+spring:
+  security:
+    basic:
+      enabled: true
+    user:
+      name: user
+      password: user

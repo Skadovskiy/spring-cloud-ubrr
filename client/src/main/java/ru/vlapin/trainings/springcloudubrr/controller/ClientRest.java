@@ -24,7 +24,7 @@ import ru.vlapin.trainings.springcloudubrr.model.Client;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/client")
+@RequestMapping("client")
 public class ClientRest {
 
   ClientDAO dao;

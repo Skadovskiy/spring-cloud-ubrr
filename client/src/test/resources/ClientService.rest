@@ -1,7 +1,7 @@
 ### Create client
-POST http://localhost:8801/client
+POST http://localhost:8801/client?name=Test
 Authorization: Basic dXNlcjp1c2Vy
-Content-Disposition: form-data; name="Test"
+Content-Type: multipart/form-data; name="Test"
 
 ### Get client info
 GET http://user:user@localhost:8801/client
