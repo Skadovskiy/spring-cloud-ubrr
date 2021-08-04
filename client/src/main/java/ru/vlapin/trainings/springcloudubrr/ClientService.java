@@ -20,28 +20,11 @@ public class ClientService {
     SpringApplication.run(ClientService.class, args);
   }
 
-  @Configuration
   @EnableWebSecurity
-  @Order(1)
-  public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-      auth.inMemoryAuthentication().withUser("discUser")
-          .password("discPassword").roles("SYSTEM");
-    }
-
+  static class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-      http.sessionManagement()
-          .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
-          .and().requestMatchers().antMatchers("/client/**")
-          .and().authorizeRequests().antMatchers("/client/**")
-          .hasRole("SYSTEM").anyRequest().denyAll().and()
-          .httpBasic().and().csrf().disable();
+      http.csrf().disable();
     }
   }
-
-
-
 }
